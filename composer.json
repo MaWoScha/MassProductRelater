@@ -1,0 +1,42 @@
+{
+    "name": "iksanika/productrelater",
+    "type": "magento-module",
+    "description": "Mass assign of up-sell, cross-sell and related products easily - hands, 1-way, multi-way algorithms available.",
+    "version": "1.0.0",
+    "keywords":["magento","mvc"],
+    "require": {
+        "php": ">=5.4.0",
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "require-dev": {
+        "ecomdev/ecomdev_phpunit": "dev-dev",
+        "mikey179/vfsStream": "*",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "magento-root-dir": "magento"
+    },
+    "scripts":
+    {
+        "pre-install-cmd":
+        [
+            "./install-magento"
+        ],
+        "post-install-cmd":
+        [
+            "bin/mage-ci shell magento ecomdev-phpunit.php -a install",
+            "bin/mage-ci shell magento ecomdev-phpunit.php -a magento-config --db-name magento --same-db 1 --base-url http://test.magento.com/",
+            "bin/mage-ci shell magento ecomdev-phpunit.php -a change-status",
+            "./compile"
+        ]
+    }
+}

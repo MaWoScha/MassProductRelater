@@ -1,0 +1,17 @@
+{
+    "name": "productrelater",
+    "private": true,
+    "engines":
+    {
+        "node": ">= 0.10.0"
+    },
+    "dependencies":
+    {
+        "grunt": "~0.4.2",
+        "grunt-shell": "*"
+    },
+    "devDependencies":
+    {
+        "grunt-contrib-watch": "~0.5.3"
+    }
+}

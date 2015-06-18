@@ -1,0 +1,16 @@
+#!/bin/bash
+
+MAGE_DIR=magento
+MODULE="Iksanika_Productrelater"
+
+# Generate modman file links
+echo "" > modman
+for file in $(find src -type f)
+do
+    echo $file " " ${file#src/} >> modman
+done
+echo "@shell cp \$PROJECT/app/etc/modules/installed/$MODULE.xml.sample \$PROJECT/app/etc/modules/$MODULE.xml" >> modman
+
+bin/mage-ci install-module $MAGE_DIR $(pwd)
+
+bin/mage-ci phpunit $MAGE_DIR --colors

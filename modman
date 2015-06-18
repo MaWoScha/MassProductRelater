@@ -1,0 +1,24 @@
+
+src/js/Iksanika/productrelater/resources/css/productrelater.css   js/Iksanika/productrelater/resources/css/productrelater.css
+src/js/Iksanika/productrelater/jquery-1.9.1.min.js   js/Iksanika/productrelater/jquery-1.9.1.min.js
+src/js/Iksanika/productrelater/relatergrid.js   js/Iksanika/productrelater/relatergrid.js
+src/js/Iksanika/productrelater/egsupplemental.js   js/Iksanika/productrelater/egsupplemental.js
+src/js/Iksanika/productrelater/relaterproducts.js   js/Iksanika/productrelater/relaterproducts.js
+src/media/iksanika/productrelater/iksanika-logo.png   media/iksanika/productrelater/iksanika-logo.png
+src/app/design/adminhtml/default/default/template/iksanika/productrelater/catalog/product.phtml   app/design/adminhtml/default/default/template/iksanika/productrelater/catalog/product.phtml
+src/app/design/adminhtml/default/default/template/iksanika/productrelater/catalog/product/grid.phtml   app/design/adminhtml/default/default/template/iksanika/productrelater/catalog/product/grid.phtml
+src/app/design/adminhtml/default/default/layout/iksanika_productrelater.xml   app/design/adminhtml/default/default/layout/iksanika_productrelater.xml
+src/app/code/community/Iksanika/Productrelater/Model/Resource/Eav/Mysql4/Product/Collection.php   app/code/community/Iksanika/Productrelater/Model/Resource/Eav/Mysql4/Product/Collection.php
+src/app/code/community/Iksanika/Productrelater/Test/Config/Module.php   app/code/community/Iksanika/Productrelater/Test/Config/Module.php
+src/app/code/community/Iksanika/Productrelater/controllers/Catalog/ProductController.php   app/code/community/Iksanika/Productrelater/controllers/Catalog/ProductController.php
+src/app/code/community/Iksanika/Productrelater/Block/Catalog/Product.php   app/code/community/Iksanika/Productrelater/Block/Catalog/Product.php
+src/app/code/community/Iksanika/Productrelater/Block/Catalog/Product/Grid.php   app/code/community/Iksanika/Productrelater/Block/Catalog/Product/Grid.php
+src/app/code/community/Iksanika/Productrelater/Block/Widget/Grid.php   app/code/community/Iksanika/Productrelater/Block/Widget/Grid.php
+src/app/code/community/Iksanika/Productrelater/Block/Widget/Grid/Column.php   app/code/community/Iksanika/Productrelater/Block/Widget/Grid/Column.php
+src/app/code/community/Iksanika/Productrelater/Block/Widget/Grid/Massaction.php   app/code/community/Iksanika/Productrelater/Block/Widget/Grid/Massaction.php
+src/app/code/community/Iksanika/Productrelater/Block/Widget/Grid/Column/Renderer/Number.php   app/code/community/Iksanika/Productrelater/Block/Widget/Grid/Column/Renderer/Number.php
+src/app/code/community/Iksanika/Productrelater/etc/config.xml   app/code/community/Iksanika/Productrelater/etc/config.xml
+src/app/code/community/Iksanika/Productrelater/Helper/Data.php   app/code/community/Iksanika/Productrelater/Helper/Data.php
+src/app/etc/modules/installed/Iksanika_Productrelater.xml.sample   app/etc/modules/installed/Iksanika_Productrelater.xml.sample
+src/app/etc/modules/Iksanika_Productrelater.xml   app/etc/modules/Iksanika_Productrelater.xml
+@shell cp $PROJECT/app/etc/modules/installed/Iksanika_Productrelater.xml.sample $PROJECT/app/etc/modules/Iksanika_Productrelater.xml

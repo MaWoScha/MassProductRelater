@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# MAGENTO VERSION
+VERSION=1.9.0.1
+DB_NAME=magento
+
+# DATABASE CONFIGURATION
+USER=root
+PASSWORD=
+
+download_dir=$HOME/.tengisa/cache/
+URL=http://test.magento.com/
+
+source <(curl -s https://raw.githubusercontent.com/EcomDev/MageCI/master/installer)
+
+if [ -z "$PASSWORD" ]
+then
+    bin/mage-ci install magento $VERSION $DB_NAME -d $download_dir -b $URL -u$USER -t -c
+else
+    bin/mage-ci install magento $VERSION $DB_NAME -d $download_dir -b $URL -u$USER -p$PASSWORD -t -c
+fi
