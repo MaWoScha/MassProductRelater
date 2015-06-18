@@ -2,7 +2,7 @@
     "name": "iksanika/productrelater",
     "type": "magento-module",
     "description": "Mass assign of up-sell, cross-sell and related products easily - hands, 1-way, multi-way algorithms available.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "keywords":["magento","mvc"],
     "require": {
         "php": ">=5.4.0",
