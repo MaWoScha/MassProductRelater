@@ -11,9 +11,14 @@
  * http://www.iksanika.com/products/IKS-LICENSE.txt
  *
  * @category   Iksanika
- * @package    Iksanika_Productrelater
+ *
  * @copyright  Copyright (c) 2013 Iksanika llc. (http://www.iksanika.com)
  * @license    http://www.iksanika.com/products/IKS-LICENSE.txt
  */
-
-class Iksanika_Productrelater_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget_Grid {public function getJsObjectName(){return $this->getId().'JsObjectIKSProductrelater';}}
+class Iksanika_Productrelater_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget_Grid
+{
+    public function getJsObjectName()
+    {
+        return $this->getId().'JsObjectIKSProductrelater';
+    }
+}
