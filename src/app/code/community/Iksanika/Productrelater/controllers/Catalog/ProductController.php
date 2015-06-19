@@ -75,13 +75,23 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
     public function getRelatedLinks($productIds, $existProducts, $productId)
     {
         $link = array();
-        foreach ($productIds as $relatedToId) {
+        foreach ($productIds as $relatedToIdSplit) {
+            $split = explode('/',$relatedToIdSplit);
+            $relatedToId = $split[0];
+            $ratio = null;
+            if (count($split) > 1)
+            {
+                $ratio = $split[1];
+            }
             if ($productId != $relatedToId) {
-                $link[$relatedToId] = array('position' => null);
+                $link[$relatedToId] = array('position' => null, 'ratio' => $ratio);
             }
         }
         foreach ($existProducts as $existProduct) {
-            $link[$existProduct->getId()] = array('position' => null);
+            if (!isset($link[$existProduct->getId()]))
+            {
+                $link[$existProduct->getId()] = array('position' => null);
+            }
         }
 
         return $link;
