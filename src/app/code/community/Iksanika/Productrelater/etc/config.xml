@@ -2,13 +2,13 @@
 <config>
     <modules>
         <Iksanika_Productrelater>
-            <version>1.0.0</version>
+            <version>1.1.1</version>
         </Iksanika_Productrelater>
     </modules>
     <admin>
         <routers>
             <productrelater>
-                <!-- should be set to "admin" when overloading admin stuff (?) -->                                         
+                <!-- should be set to "admin" when overloading admin stuff (?) -->
                 <use>admin</use>
                 <args>
                     <module>Iksanika_Productrelater</module>
@@ -43,8 +43,8 @@
                 </rewrite>
             </adminhtml>
         </blocks>
-                                                                                                                           
-    <!-- Relate Stuff -->                                                                                                  
+
+    <!-- Relate Stuff -->
     </global>
     <adminhtml>
         <layout>
