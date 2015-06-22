@@ -79,12 +79,17 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
             $split = explode('/',$relatedToIdSplit);
             $relatedToId = $split[0];
             $ratio = null;
+            $position = null;
             if (count($split) > 1)
             {
-                $ratio = $split[1];
+                $position = $split[1];
+                if (count($split) > 2)
+                {
+                    $ratio = $split[2];
+                }
             }
             if ($productId != $relatedToId) {
-                $link[$relatedToId] = array('position' => null, 'ratio' => $ratio);
+                $link[$relatedToId] = array('position' => $position, 'ratio' => $ratio);
             }
         }
         foreach ($existProducts as $existProduct) {
