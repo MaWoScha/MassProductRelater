@@ -74,6 +74,7 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
     }
     public function getRelatedLinks($productIds, $existProducts, $productId)
     {
+        $position = null;
         $link = array();
         foreach ($productIds as $relatedToIdSplit) {
             $split = explode('/',$relatedToIdSplit);
@@ -88,6 +89,13 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                     $ratio = $split[2];
                 }
             }
+
+            $product = Mage::getModel('catalog/product')->load($relatedToId);
+            if (!$product->getId())
+            {
+                throw new Exception("You are trying to add a product that does not exist. ($relatedToId)<br><br>Request:<br>$relatedToIdSplit");
+            }
+
             if ($productId != $relatedToId) {
                 $link[$relatedToId] = array('position' => $position, 'ratio' => $ratio);
             }
@@ -95,7 +103,13 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
         foreach ($existProducts as $existProduct) {
             if (!isset($link[$existProduct->getId()]))
             {
-                $link[$existProduct->getId()] = array('position' => null);
+                $eposition = $existProduct->getPosition();
+                $eratio = $existProduct->getRatio();
+                if ($eposition != null && $eposition >= $position)
+                {
+                    $eposition = (string)($eposition + 1);
+                }
+                $link[$existProduct->getId()] = array('position' => $eposition, 'ratio' => $eratio);
             }
         }
 
@@ -105,13 +119,16 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
     {
         $link = array();
         foreach ($existProducts as $existProduct) {
-            $link[$existProduct->getId()] = array('position' => null);
+            $position = $existProduct->getPosition();
+            $ratio = $existProduct->getRatio();
+            $link[$existProduct->getId()] = array('position' => $position, 'ratio' => $ratio);
         }
         foreach ($productIds as $relatedToId) {
             if ($productId != $relatedToId) {
                 if (isset($link[$relatedToId]))
                 {
                     unset($link[$relatedToId]);
+
                 }
             }
         }
