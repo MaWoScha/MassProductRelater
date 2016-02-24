@@ -4,6 +4,6 @@ class Iksanika_Productrelater_Test_Config_Module extends EcomDev_PHPUnit_Test_Ca
     public function testModuleParams()
     {
         $this->assertModuleCodePool("community");
-        $this->assertModuleVersion("1.0.0");
+        $this->assertModuleVersion("1.1.4");
     }
 }
