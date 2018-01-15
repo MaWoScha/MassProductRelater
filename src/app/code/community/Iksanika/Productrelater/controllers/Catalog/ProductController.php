@@ -15,7 +15,9 @@
  * @copyright  Copyright (c) 2013 Iksanika llc. (http://www.iksanika.com)
  * @license    http://www.iksanika.com/products/IKS-LICENSE.txt
  */
-include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Iksanika_Productrelater_Catalog_ProductController extends Mage_Adminhtml_Catalog_ProductController
+include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';
+
+class Iksanika_Productrelater_Catalog_ProductController extends Mage_Adminhtml_Catalog_ProductController
 {
     protected function _construct()
     {
@@ -47,19 +49,21 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                     $productBefore = $product;
                     $columnForUpdate = array('related_ids', 'cross_sell_ids', 'up_sell_ids');
                     foreach ($columnForUpdate as $columnName) {
-                        $columnValuesForUpdate = $this->getRequest()->getParam($columnName); if ($columnName == 'related_ids') {
-    $relatedIds = trim($columnValuesForUpdate[$itemId]) != '' ? explode(',', trim($columnValuesForUpdate[$itemId])) : array();
-    $link = $this->getRelatedLinks($relatedIds, array(), $productId);
-    $product->setRelatedLinkData($link);
-} elseif ($columnName == 'cross_sell_ids') {
-    $crossSellIds = trim($columnValuesForUpdate[$itemId]) != '' ? explode(',', trim($columnValuesForUpdate[$itemId])) : array();
-    $link = $this->getRelatedLinks($crossSellIds, array(), $productId);
-    $product->setCrossSellLinkData($link);
-} elseif ($columnName == 'up_sell_ids') {
-    $upSellIds = trim($columnValuesForUpdate[$itemId]) != '' ? explode(',', trim($columnValuesForUpdate[$itemId])) : array();
-    $link = $this->getRelatedLinks($upSellIds, array(), $productId);
-    $product->setUpSellLinkData($link);
-}
+                        $columnValuesForUpdate = $this->getRequest()->getParam($columnName);
+                        // handle exceptional situation or related tables savings
+                        if ($columnName == 'related_ids') {
+							$relatedIds = trim($columnValuesForUpdate[$itemId]) != '' ? explode(',', trim($columnValuesForUpdate[$itemId])) : array();
+							$link = $this->getRelatedLinks($relatedIds, array(), $productId);
+							$product->setRelatedLinkData($link);
+						} elseif ($columnName == 'cross_sell_ids') {
+							$crossSellIds = trim($columnValuesForUpdate[$itemId]) != '' ? explode(',', trim($columnValuesForUpdate[$itemId])) : array();
+							$link = $this->getRelatedLinks($crossSellIds, array(), $productId);
+							$product->setCrossSellLinkData($link);
+						} elseif ($columnName == 'up_sell_ids') {
+							$upSellIds = trim($columnValuesForUpdate[$itemId]) != '' ? explode(',', trim($columnValuesForUpdate[$itemId])) : array();
+							$link = $this->getRelatedLinks($upSellIds, array(), $productId);
+							$product->setUpSellLinkData($link);
+						}
                     }
                     $product->save();
                 }
@@ -81,18 +85,15 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
             $relatedToId = $split[0];
             $ratio = null;
             $position = null;
-            if (count($split) > 1)
-            {
+            if (count($split) > 1) {
                 $position = $split[1];
-                if (count($split) > 2)
-                {
+                if (count($split) > 2) {
                     $ratio = $split[2];
                 }
             }
 
             $product = Mage::getModel('catalog/product')->load($relatedToId);
-            if (!$product->getId())
-            {
+            if (!$product->getId()) {
                 throw new Exception("You are trying to add a product that does not exist. ($relatedToId)<br><br>Request:<br>$relatedToIdSplit");
             }
 
@@ -100,13 +101,12 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                 $link[$relatedToId] = array('position' => $position, 'ratio' => $ratio);
             }
         }
+        // Fetch and append to already related products.
         foreach ($existProducts as $existProduct) {
-            if (!isset($link[$existProduct->getId()]))
-            {
+            if (!isset($link[$existProduct->getId()])) {
                 $eposition = $existProduct->getPosition();
                 $eratio = $existProduct->getRatio();
-                if ($eposition != null && $eposition >= $position)
-                {
+                if ($eposition != null && $eposition >= $position) {
                     $eposition = (string)($eposition + 1);
                 }
                 $link[$existProduct->getId()] = array('position' => $eposition, 'ratio' => $eratio);
@@ -125,10 +125,8 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
         }
         foreach ($productIds as $relatedToId) {
             if ($productId != $relatedToId) {
-                if (isset($link[$relatedToId]))
-                {
+                if (isset($link[$relatedToId])) {
                     unset($link[$relatedToId]);
-
                 }
             }
         }

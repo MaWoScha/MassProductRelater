@@ -20,9 +20,9 @@ class Iksanika_Productrelater_Block_Widget_Grid_Column_Renderer_Number extends M
     public function render(Varien_Object $row)
     {
         $html = '<input type="text" ';
-        $html .= 'name="'.$this->getColumn()->getId().'" ';
-        $html .= 'value="'.parent::_getValue($row).'"';
-        $html .= 'class="input-text '.$this->getColumn()->getInlineCss().'"/>';
+        $html .= 'name="' . $this->getColumn()->getId() . '" ';
+        $html .= 'value="' . parent::_getValue($row) . '"';
+        $html .= 'class="input-text ' . $this->getColumn()->getInlineCss() . '"/>';
 
         return $html;
     }
