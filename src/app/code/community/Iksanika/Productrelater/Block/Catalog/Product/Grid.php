@@ -136,9 +136,9 @@ class Iksanika_Productrelater_Block_Catalog_Product_Grid extends Iksanika_Produc
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('websites', array('header' => Mage::helper('catalog')->__('Websites'), 'width' => '100px', 'sortable' => false, 'index' => 'websites', 'type' => 'options', 'options' => Mage::getModel('core/website')->getCollection()->toOptionHash()));
         }
-        $this->addColumn('related_ids', array('type' => 'input', 'index' => 'related_ids', 'width' => '80px', 'filter_condition_callback' => array($this, '_applyMyFilter'), 'header' => Mage::helper('catalog')->__('Related IDs')));
-        $this->addColumn('cross_sell_ids', array('type' => 'input', 'index' => 'cross_sell_ids', 'width' => '80px', 'filter_condition_callback' => array($this, '_applyMyFilter'), 'header' => Mage::helper('catalog')->__('Cross-Sell IDs')));
-        $this->addColumn('up_sell_ids', array('type' => 'input', 'index' => 'up_sell_ids', 'width' => '80px', 'filter_condition_callback' => array($this, '_applyMyFilter'), 'header' => Mage::helper('catalog')->__('Up-Sell IDs')));
+        $this->addColumn('related_ids', array('type' => 'input', 'index' => 'related_ids', 'width' => '80px', 'filter_condition_callback' => array($this, '_applyMyFilter'), 'header' => Mage::helper('productrelater')->__('Related IDs')));
+        $this->addColumn('cross_sell_ids', array('type' => 'input', 'index' => 'cross_sell_ids', 'width' => '80px', 'filter_condition_callback' => array($this, '_applyMyFilter'), 'header' => Mage::helper('productrelater')->__('Cross-Sell IDs')));
+        $this->addColumn('up_sell_ids', array('type' => 'input', 'index' => 'up_sell_ids', 'width' => '80px', 'filter_condition_callback' => array($this, '_applyMyFilter'), 'header' => Mage::helper('productrelater')->__('Up-Sell IDs')));
         $this->addColumn('action', array('header' => Mage::helper('catalog')->__('Action'), 'width' => '50px', 'type' => 'action', 'getter' => 'getId', 'filter' => false, 'sortable' => false, 'index' => 'stores', 'actions' => array(array('caption' => Mage::helper('catalog')->__('Edit'), 'id' => 'editlink', 'url' => array('base' => 'adminhtml/*/edit', 'params' => array('store' => $this->getRequest()->getParam('store'))), 'field' => 'id'))));
         $this->addRssList('rss/catalog/notifystock', Mage::helper('catalog')->__('Notify Low Stock RSS'));
         $this->setDestElementId('edit_form');

@@ -174,7 +174,7 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                     }
                     $product->save();
                 }
-                $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully related to products('.$productIds2List.').', count($productIds)));
+                $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully related to products(%s).', count($productIds), $productIds2List));
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }
@@ -199,7 +199,7 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                     }
                     $product->save();
                 }
-                $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully unrelated to products('.$productIds2List.').', count($productIds)));
+                $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully unrelated to products(%s).', count($productIds), $productIds2List));
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }
@@ -269,7 +269,7 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                     }
                     $product->save();
                 }
-                $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully set as cross-sells by products('.$productIds2List.').', count($productIds)));
+                $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully set as cross-sells by products(%s).', count($productIds), $productIds2List));
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }
@@ -316,7 +316,7 @@ include_once 'Mage/Adminhtml/controllers/Catalog/ProductController.php';class Ik
                     }
                     $product->save();
                 }
-                $this->_getSession()->addSuccess($this->__('Total of %d record(s) are now up-sold by products('.$productIds2List.').', count($productIds)));
+                $this->_getSession()->addSuccess($this->__('Total of %d record(s) are now up-sold by products(%s).', count($productIds), $productIds2List));
             } catch (Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             }
